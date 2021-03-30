@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web IM</title>
+    <link rel="stylesheet" href="./layui/css/layui.css">
+    <link rel="stylesheet" href="./src/css/index.css">
+</head>
+
+<body>
+    <script src="./layui/layui.js"></script>
+    <script src="./jquery/jquery-3.4.1.min.js"></script>
+    <!-- 引入IM 相关文件 -->
+    <script src="./src/sdk/websdk3.5.0.js"></script>
+    <script src="./src/utils/WebIMConfig.js"></script>
+    <script src="./src/utils/WebIM.js"></script>
+    <script src="./src//utils/WebIMListen.js"></script>
+    <script src="./src/utils/initLay.js"></script>
+    <script src="./src//utils/AlertMessage.js"></script>
+
+    <script src="./src/utils/ChangeModel.js"></script>
+    <script src="./src/components/login&regis/login.js"></script>
+    <script src="./src/components/login&regis/register.js"></script>
+    <div class="index-model">
+        <div class="login">
+            <img src="./images/loginIcon.png" class="logo">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <input type="text" id="username" required lay-verify="required" placeholder="请输入账号"
+                        autocomplete="off" class="layui-input login-inp">
+                </div>
+                <div class="layui-form-item">
+                    <input type="password" id="password" required lay-verify="required" placeholder="请输入密码"
+                        autocomplete="off" class="layui-input login-inp">
+                </div>
+                <div class="layui-form-item">
+                    <input type="text" id="nickname" placeholder="请输入昵称" autocomplete="off"
+                        class="layui-input login-inp">
+                </div>
+            </form>
+            <button class="layui-btn login-btn" lay-submit="" id="onLogin">登录</button>
+            <button class="layui-btn login-btn" lay-submit="" id="onRegis">注册</button>
+            <div class="to-regis">
+                <p class="to-text"> 没有账号？
+                    <span class="to-btn" id="goRegis">注册</span>
+                </p>
+            </div>
+            <div class="to-login">
+                <p class="to-text"> 已有账号？
+                    <span class="to-btn" id="goLogin">登陆</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="chat-model">
+        <div>
+            <img src="" alt="个人中心">
+
+        </div>
+    </div>
+    <script>
+        //当前登陆页面，隐藏去注册的文本
+        (function () {
+            initHtml();
+            let userInfo = localStorage.getItem('userInfo') && JSON.parse(localStorage.getItem('userInfo'));
+            if (userInfo != null) {
+                console.log(userInfo)
+                let options = {
+                    user: userInfo.userId,
+                    accessToken: userInfo.token,
+                    appKey: WebIM.config.appkey,
+                };
+                WebIM.conn.open(options);
+            }
+
+            layui.config({
+                base: './layui/notice/dist/'
+            });
+
+        })(jQuery)
+
+    </script>
+</body>
+
+</html>
