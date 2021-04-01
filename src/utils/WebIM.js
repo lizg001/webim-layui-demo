@@ -1,4 +1,16 @@
 
+//获取userId
+function getUserId(str) {
+    // console.log('name', str)
+    if (typeof str !== "string") return ""
+    return (
+      str.match(/chatdemoui_(\S*)@|chatdemoui_(\S*)/)[1] ||
+      str.match(/chatdemoui_(\S*)@|chatdemoui_(\S*)/)[2]
+    )
+  }
+
+
+
 //初始化IM SDK
 var conn = {};
 WebIM.config = config;

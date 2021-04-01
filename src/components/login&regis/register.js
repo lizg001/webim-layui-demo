@@ -20,7 +20,7 @@ $(function () {
             },
             error: function (err) {
                 let errorData = JSON.parse(err.data).error;
-                alertErrorMessage(errorData);
+                messageNotice.alertErrorMessage(errorData);
             },
         };
         WebIM.conn.registerUser(options);

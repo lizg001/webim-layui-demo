@@ -10,12 +10,15 @@ function initHtml() {
 
 //登陆成功后，跳转chat-model
 function toChatMoudle() {
+    //隐藏登陆页
     $(".index-model").hide();
+    //显示聊天页
     $(".chat-model").show();
+    //默认点击获取会话列表
+    $('.side-setting li:first').click();
 }
 
 $(function () {
-
     //跳转注册
     $("#goRegis").click(function (e) {
         e.preventDefault();
@@ -38,6 +41,26 @@ $(function () {
         $("#nickname").hide();
         $("#onRegis").hide();
         $("#onLogin").show();
+    })
+
+
+    //显示会话列表
+    $("#channels").click(function () {  
+        $(".channels-contact").show();
+        $(".list-contact").hide();
+        $(".room-contact").hide();
+    })
+     //显示联系人列表
+     $("#contact").click(function () {  
+        $(".channels-contact").hide();
+        $(".list-contact").show();
+        $(".room-contact").hide();
+    })
+    //显示聊天室列表
+    $("#room").click(function () {  
+        $(".channels-contact").hide();
+        $(".list-contact").hide();
+        $(".room-contact").show();
     })
 
 })

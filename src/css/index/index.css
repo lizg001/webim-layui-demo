@@ -3,7 +3,7 @@
     width            : 100vw;
     background-size  : 100% 100%;
     background-color : #D8D8D8;
-    background-image : url("../../images/loginBg.png");
+    background-image : url("../../../images/loginBg.png");
     background-repeat: no-repeat;
 }
 
@@ -58,9 +58,6 @@
     right     : 20%;
 }
 
-.to-text {
-    color: #fff;
-}
 
 .to-btn {
     color : #03C5F5;

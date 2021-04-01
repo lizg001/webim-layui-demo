@@ -6,7 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web IM</title>
     <link rel="stylesheet" href="./layui/css/layui.css">
-    <link rel="stylesheet" href="./src/css/index.css">
+    <link rel="stylesheet" href="./src/css/index/index.css">
+    <link rel="stylesheet" href="./src/css/chat/side.css">
+    <link rel="stylesheet" href="./src/css/chat/list.css">
 </head>
 
 <body>
@@ -23,6 +25,8 @@
     <script src="./src/utils/ChangeModel.js"></script>
     <script src="./src/components/login&regis/login.js"></script>
     <script src="./src/components/login&regis/register.js"></script>
+    <script src="./src/components/chat/chatModel.js"></script>
+    <script src="./src/components/message/getChannels.js"></script>
     <div class="index-model">
         <div class="login">
             <img src="./images/loginIcon.png" class="logo">
@@ -43,21 +47,72 @@
             <button class="layui-btn login-btn" lay-submit="" id="onLogin">登录</button>
             <button class="layui-btn login-btn" lay-submit="" id="onRegis">注册</button>
             <div class="to-regis">
-                <p class="to-text"> 没有账号？
-                    <span class="to-btn" id="goRegis">注册</span>
-                </p>
+                <p class="to-btn" id="goRegis">注册账号</p>
             </div>
             <div class="to-login">
-                <p class="to-text"> 已有账号？
-                    <span class="to-btn" id="goLogin">登陆</span>
-                </p>
+                <p class="to-btn" id="goLogin">返回登陆</p>
             </div>
         </div>
     </div>
     <div class="chat-model">
-        <div>
-            <img src="" alt="个人中心">
+        <div class="chat-setting">
+            <div class="chat-side">
+                <div class="side-user-icon">
+                    <img src="./images/loginIcon.png" class="icon-userpic">
+                </div>
+                <ul class="side-setting">
+                    <li class="side-icon" id="channels">
+                        <img src="./images/chat.png" class="icon-size">
+                    </li>
+                    <li class="side-icon" id="contact">
+                        <img src="./images/comtactshighlight2x.png" class="icon-size">
+                    </li>
+                    <li class="side-icon" id="room">
+                        <img src="./images/groupTheme.png" class="icon-size">
+                    </li>
+                    <li class="side-icon icon-setting">
+                        <img src="./images/settinghighlight1x.png" class="icon-size">
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="chat-user-list">
+            <div class="search">
+                <input type="text" class="search-input" placeholder="搜索">
+            </div>
+            <div class="chat-list">
+                <div class="channels-contact">
+                   <ul class="channel-list">
+                   </ul>
+                </div>
+                <div class="list-contact">
+                    <div class="item-channel">
+                        <span>图片</span>
+                        <span>新消息</span>
+                    </div>
+                    <div>
+                        <span><i>收</i> 群聊</span>
+                        <span>0</span>
+                        <ul>
+                            <li>群组</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span><i>收</i>联系人</span>
+                        <span>0</span>
+                        <ul>
+                            <li>好友</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="room-contact">
+                    <h2>内容3</h2>
+                </div>
+            </div>
+        </div>
 
+        <div>
+            <h1>聊天区</h1>
         </div>
     </div>
     <script>
@@ -78,8 +133,8 @@
             layui.config({
                 base: './layui/notice/dist/'
             });
-
         })(jQuery)
+
 
     </script>
 </body>

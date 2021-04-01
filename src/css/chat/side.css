@@ -1,0 +1,51 @@
+.chat-model {
+    width  : 100vw;
+    height : 100vh;
+    display: flex;
+    background: #F2F2F2;
+}
+
+.chat-setting {
+    height : 100%;
+    display: flex;
+}
+
+.chat-side {
+    background: #262626;
+}
+
+.side-setting {
+    width      : 72px;
+    align-items: stretch;
+}
+
+.icon-setting{
+    position: absolute;
+    bottom  : 5%;
+}
+
+
+.side-user-icon {
+    padding: 10px;
+}
+
+.icon-userpic {
+    height    : 50px;
+    width     : 50px;
+    text-align: center;
+    cursor    : pointer
+}
+
+.side-icon {
+    padding   : 30px 20px;
+    text-align: center;
+    height    : 30px;
+    width     : 30px;
+    cursor    : pointer
+}
+
+.icon-size {
+    height: 30px;
+    width : 30px;
+}
+

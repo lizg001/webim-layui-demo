@@ -1,6 +1,31 @@
+let layer;
 let notice;
-layui.use(['layer', 'notice'], function () {
+let element;
+
+// window.onload = function () {  
+    // initHtml();
+    // let userInfo = localStorage.getItem('userInfo') && JSON.parse(localStorage.getItem('userInfo'));
+    // if (userInfo != null) {
+    //     console.log(userInfo)
+    //     let options = {
+    //         user: userInfo.userId,
+    //         accessToken: userInfo.token,
+    //         appKey: WebIM.config.appkey,
+    //     };
+    //     WebIM.conn.open(options);
+    // }
+
+    // layui.config({
+    //     base: '../../layui/notice/dist/'
+    // });
+// }
+
+
+
+layui.use(['layer', 'notice','element'], function () {
+    layer = layui.layer;
     notice = layui.notice;
+    element = layui.element;
     notice.options = {
         closeButton: true,//显示关闭按钮
         debug: false,//启用debug

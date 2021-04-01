@@ -1,12 +1,13 @@
 let loginSuc;
 WebIM.conn.listen({
     onOpened: function (message) {
-        console.log('登陆成功');
         loginSuc = "登陆成功";
         alertMessage(loginSuc);
         toChatMoudle();
     },         //连接成功回调 
-    onClosed: function (message) { },         //连接关闭回调
+    onClosed: function (message) { 
+        initHtml();
+    },         //连接关闭回调
     onTextMessage: function (message) { },    //收到文本消息
     onEmojiMessage: function (message) { },   //收到表情消息
     onPictureMessage: function (message) { }, //收到图片消息
