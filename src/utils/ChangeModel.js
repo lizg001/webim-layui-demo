@@ -6,6 +6,9 @@ function initHtml() {
     $("#onRegis").hide();
     $(".index-model").show();
     $(".chat-model").hide();
+    $("#username").val('');
+    $("#password").val('')
+
 }
 
 //登陆成功后，跳转chat-model

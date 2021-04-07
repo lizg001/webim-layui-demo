@@ -18,15 +18,17 @@
     <script src="./src/sdk/websdk3.5.0.js"></script>
     <script src="./src/utils/WebIMConfig.js"></script>
     <script src="./src/utils/WebIM.js"></script>
+    <script src="./src/utils/AlertMessage.js"></script>
     <script src="./src//utils/WebIMListen.js"></script>
     <script src="./src/utils/initLay.js"></script>
-    <script src="./src//utils/AlertMessage.js"></script>
 
     <script src="./src/utils/ChangeModel.js"></script>
-    <script src="./src/components/login&regis/login.js"></script>
-    <script src="./src/components/login&regis/register.js"></script>
-    <script src="./src/components/chat/chatModel.js"></script>
-    <script src="./src/components/message/getChannels.js"></script>
+    <script src="./src/store/usersApi.js"></script>
+    <script src="./src/store/messageApi.js"></script>
+    <script src="./src/store/groupApi.js"></script>
+    <script src="./src/pages/login&regis/login&regis.js"></script>
+    <script src="./src/pages/chat/chatModel.js"></script>
+    <script src="./src/pages/chat/showList.js"></script>
     <div class="index-model">
         <div class="login">
             <img src="./images/loginIcon.png" class="logo">
@@ -44,8 +46,8 @@
                         class="layui-input login-inp">
                 </div>
             </form>
-            <button class="layui-btn login-btn" lay-submit="" id="onLogin">登录</button>
-            <button class="layui-btn login-btn" lay-submit="" id="onRegis">注册</button>
+            <button class="layui-btn login-btn" id="onLogin">登录</button>
+            <button class="layui-btn login-btn" id="onRegis">注册</button>
             <div class="to-regis">
                 <p class="to-btn" id="goRegis">注册账号</p>
             </div>
@@ -78,35 +80,50 @@
         </div>
         <div class="chat-user-list">
             <div class="search">
+                <img src="./images/searchicon.png" class="search-icon">
                 <input type="text" class="search-input" placeholder="搜索">
             </div>
             <div class="chat-list">
                 <div class="channels-contact">
-                   <ul class="channel-list">
-                   </ul>
+                    <ul class="channel-list" id="no-channels">
+                    </ul>
                 </div>
                 <div class="list-contact">
-                    <div class="item-channel">
-                        <span>图片</span>
-                        <span>新消息</span>
+                    <div class="notice">
+                        <div class="new-notice-text">新消息</div>
+                        <div class="item-channel">
+                            <div>
+                                <img src="./images/inform.png" class="new-notice-icon">
+                                <span>新通知</span>
+                            </div>
+
+                        </div>
                     </div>
-                    <div>
-                        <span><i>收</i> 群聊</span>
-                        <span>0</span>
-                        <ul>
-                            <li>群组</li>
-                        </ul>
-                    </div>
-                    <div>
-                        <span><i>收</i>联系人</span>
-                        <span>0</span>
-                        <ul>
-                            <li>好友</li>
-                        </ul>
+                    <div class="list-over">
+                        <div>
+                            <div class="new-notice-text" id="groupList">
+                                <img src="./images/next2.png" class="show-list-icon" id="group-list-icon">
+                                <span class="group-list-show">群聊</span>
+                                <span class="group-num"></span>
+                            </div>
+                            <ul class="group-list">
+
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="new-notice-text" id="contactList">
+                                <img src="./images/next2.png" class="show-list-icon" id="contact-list-icon">
+                                <span>联系人</span>
+                                <span class="contact-num">0</span>
+                            </div>
+                            <ul class="contact-list">
+
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div class="room-contact">
-                    <h2>内容3</h2>
+                    <ul class="room-list"></ul>
                 </div>
             </div>
         </div>
@@ -130,6 +147,7 @@
                 WebIM.conn.open(options);
             }
 
+            //配置layui notice
             layui.config({
                 base: './layui/notice/dist/'
             });

@@ -1,12 +1,14 @@
-let loginSuc;
+
 WebIM.conn.listen({
     onOpened: function (message) {
-        loginSuc = "登陆成功";
-        alertMessage(loginSuc);
-        toChatMoudle();
+        setTimeout(() => {
+            messageNotice.alertMessage("loginSuc");
+            toChatMoudle();
+        }, 100);
     },         //连接成功回调 
-    onClosed: function (message) { 
+    onClosed: function (message) {
         initHtml();
+        localStorage.clear();
     },         //连接关闭回调
     onTextMessage: function (message) { },    //收到文本消息
     onEmojiMessage: function (message) { },   //收到表情消息
@@ -22,16 +24,20 @@ WebIM.conn.listen({
     onOnline: function () { },                  //本机网络连接成功
     onOffline: function () { },                 //本机网络掉线
     onError: function (message) {
-        console.log('onError', JSON.parse(message.data.data));
-        let error = JSON.parse(message.data.data).error_description
-        alertErrorMessage(error)
+        let error;
+        if (message.message === "the user cannot be empty") {
+            error = "the user cannot be empty"
+        } else {
+            error = JSON.parse(message.data.data).error_description
+        }
+        messageNotice.alertErrorMessage(error)
     },          //失败回调
-onBlacklistUpdate: function (list) { },      //黑名单变动,
-onRecallMessage: function (message) { },      //收到撤回消息回调
-onReceivedMessage: function (message) { },    //收到消息送达服务器回执
-onDeliveredMessage: function (message) { },   //收到消息送达客户端回执
-onReadMessage: function (message) { },        //收到消息已读回执
-onCreateGroup: function (message) { },        //创建群组成功回执（需调用createGroupNew）
-onMutedMessage: function (message) { },       //如果用户在A群组被禁言，在A群发消息会走这个回调并且消息不会传递给群其它成员
-onChannelMessage: function (message) { }      //收到整个会话已读的回执，在对方发送channel ack时会在这个回调里收到消息
+    onBlacklistUpdate: function (list) { },      //黑名单变动,
+    onRecallMessage: function (message) { },      //收到撤回消息回调
+    onReceivedMessage: function (message) { },    //收到消息送达服务器回执
+    onDeliveredMessage: function (message) { },   //收到消息送达客户端回执
+    onReadMessage: function (message) { },        //收到消息已读回执
+    onCreateGroup: function (message) { },        //创建群组成功回执（需调用createGroupNew）
+    onMutedMessage: function (message) { },       //如果用户在A群组被禁言，在A群发消息会走这个回调并且消息不会传递给群其它成员
+    onChannelMessage: function (message) { }      //收到整个会话已读的回执，在对方发送channel ack时会在这个回调里收到消息
 });

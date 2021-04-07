@@ -1,27 +1,7 @@
 let layer;
 let notice;
 let element;
-
-// window.onload = function () {  
-    // initHtml();
-    // let userInfo = localStorage.getItem('userInfo') && JSON.parse(localStorage.getItem('userInfo'));
-    // if (userInfo != null) {
-    //     console.log(userInfo)
-    //     let options = {
-    //         user: userInfo.userId,
-    //         accessToken: userInfo.token,
-    //         appKey: WebIM.config.appkey,
-    //     };
-    //     WebIM.conn.open(options);
-    // }
-
-    // layui.config({
-    //     base: '../../layui/notice/dist/'
-    // });
-// }
-
-
-
+//初始化layui
 layui.use(['layer', 'notice','element'], function () {
     layer = layui.layer;
     notice = layui.notice;
